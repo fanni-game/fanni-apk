@@ -1,0 +1,15 @@
+# 构建产物
+.gradle/
+build/
+app/build/
+local.properties
+
+# 签名文件（VPS生成后单独备份，严禁入库）
+*.keystore
+*.jks
+keystore.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
