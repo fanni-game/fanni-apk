@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 全屏无标题栏主题（纯framework，无androidx） -->
+    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">#0E1220</item>
+        <item name="android:statusBarColor">#0E1220</item>
+        <item name="android:navigationBarColor">#0E1220</item>
+    </style>
+</resources>
