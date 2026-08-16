@@ -1,0 +1,50 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.fanni.shell'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.fanni.shell"
+        minSdk 21          // 安卓5.0以上
+        targetSdk 30       // 按要求固定30
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // 签名配置从 keystore.properties 读取（文件在VPS生成，不入库）
+    signingConfigs {
+        release {
+            def ksProps = new Properties()
+            def ksFile = rootProject.file("keystore.properties")
+            if (ksFile.exists()) {
+                ksProps.load(new FileInputStream(ksFile))
+                storeFile rootProject.file(ksProps['storeFile'])
+                storePassword ksProps['storePassword']
+                keyAlias ksProps['keyAlias']
+                keyPassword ksProps['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true      // 代码混淆
+            shrinkResources true    // 资源压缩
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            // debug 用默认调试签名即可
+        }
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+// 纯framework工程，无任何第三方依赖
+dependencies {
+}
