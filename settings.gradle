@@ -1,0 +1,2 @@
+rootProject.name = "FanNiShell"
+include ':app'
