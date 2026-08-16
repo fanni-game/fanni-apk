@@ -1,0 +1,18 @@
+// 顶层构建脚本：只做依赖仓库声明 + AGP 插件加载
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // 与 VPS 已装环境配套：JDK 17 + Gradle 8.4 + platform-34 + build-tools 34.0.0
+        classpath 'com.android.tools.build:gradle:8.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
